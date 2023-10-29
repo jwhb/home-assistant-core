@@ -6,7 +6,11 @@
   "postStartCommand": "script/bootstrap",
   "containerEnv": { "DEVCONTAINER": "1" },
   "appPort": ["8123:8123"],
-  "runArgs": ["-e", "GIT_EDITOR=code --wait"],
+  "runArgs": [
+    "--userns=keep-id:uid=1000,gid=1000", "-e", "GIT_EDITOR=code --wait"
+  ],
+  "containerUser": "vscode",
+  "updateRemoteUserUID": true,
   "customizations": {
     "vscode": {
       "extensions": [
